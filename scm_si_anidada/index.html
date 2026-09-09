@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#071f57" />
+  <meta name="description" content="Plataforma educativa interactiva SCM sobre Función SI Anidada para Google Sheets, dirigida a 2.º de Secundaria." />
+  <title>SCM · Función SI Anidada · 2.º de Secundaria</title>
+  <link rel="icon" href="assets/logo-scm.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <!-- ACCESO -->
+  <section id="welcomeScreen" class="welcome-screen" aria-labelledby="welcomeTitle">
+    <div class="welcome-glow glow-one"></div>
+    <div class="welcome-glow glow-two"></div>
+    <div class="welcome-shell">
+      <div class="welcome-brand">
+        <img src="assets/logo-scm.png" alt="Logo del Colegio Sagrado Corazón de La Molina" class="school-logo" />
+        <div>
+          <p class="eyebrow">Colegio Sagrado Corazón de La Molina</p>
+          <h1 id="welcomeTitle">Laboratorio Digital SCM</h1>
+          <p class="welcome-copy">Aprende a tomar decisiones con fórmulas usando la <strong>Función SI Anidada en Google Sheets</strong>.</p>
+        </div>
+      </div>
+
+      <div class="welcome-grid">
+        <div class="welcome-visual" aria-hidden="true">
+          <div class="mascot-card">
+            <img src="assets/mascota-scm.png" alt="" />
+            <div class="mascot-bubble">¡Tu lógica puede llegar muy lejos! 🚀</div>
+          </div>
+          <div class="grade-badge">
+            <span>Curso</span>
+            <strong>2.º de Secundaria</strong>
+          </div>
+        </div>
+
+        <form id="loginForm" class="login-card" autocomplete="off">
+          <div class="card-heading">
+            <span class="step-chip">Acceso de estudiante</span>
+            <h2>Bienvenido(a)</h2>
+            <p>Completa tus datos y elige tu sección.</p>
+          </div>
+
+          <div class="field-row">
+            <label class="field">
+              <span>Nombre</span>
+              <input id="firstName" name="firstName" type="text" maxlength="35" required placeholder="Ej. Valeria" autocomplete="given-name" />
+            </label>
+            <label class="field">
+              <span>Apellido</span>
+              <input id="lastName" name="lastName" type="text" maxlength="35" required placeholder="Ej. Torres" autocomplete="family-name" />
+            </label>
+          </div>
+
+          <fieldset class="section-picker">
+            <legend>Selecciona tu sección</legend>
+            <div class="section-options" role="radiogroup" aria-label="Sección">
+              <label class="section-option">
+                <input type="radio" name="section" value="MONET" required />
+                <span class="section-card"><b>MONET</b><small>2.º de Secundaria</small></span>
+              </label>
+              <label class="section-option">
+                <input type="radio" name="section" value="DA VINCI" required />
+                <span class="section-card"><b>DA VINCI</b><small>2.º de Secundaria</small></span>
+              </label>
+            </div>
+          </fieldset>
+
+          <label class="field">
+            <span>Clave de acceso</span>
+            <div class="password-wrap">
+              <input id="accessKey" name="accessKey" type="password" required placeholder="•••••••" autocomplete="off" />
+              <button type="button" id="togglePassword" class="icon-button" aria-label="Mostrar u ocultar clave">👁️</button>
+            </div>
+            <small class="helper-text">La validación usa una huella SHA-256 en el navegador.</small>
+          </label>
+
+          <p id="loginError" class="form-error" role="alert"></p>
+          <button type="submit" class="primary-button wide">Ingresar al laboratorio <span>→</span></button>
+          <p class="privacy-note">Tus avances se guardan únicamente en este navegador mediante almacenamiento local.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- APLICACIÓN -->
+  <div id="app" class="app-shell is-hidden">
+    <aside id="sidebar" class="sidebar" aria-label="Navegación principal">
+      <div class="sidebar-brand">
+        <img src="assets/logo-scm.png" alt="SCM" />
+        <div>
+          <strong>SCM Digital</strong>
+          <span>2.º Secundaria</span>
+        </div>
+        <button id="closeSidebar" class="mobile-close" aria-label="Cerrar menú">×</button>
+      </div>
+
+      <nav class="main-nav">
+        <button class="nav-item active" data-target="inicio"><span class="nav-icon icon-blue">⌂</span><span>Inicio</span></button>
+        <button class="nav-item" data-target="teoria"><span class="nav-icon icon-cyan">Σ</span><span>Teoría</span></button>
+        <button class="nav-item" data-target="multimedia"><span class="nav-icon icon-red">▶</span><span>Multimedia</span></button>
+        <button class="nav-item" data-target="juegos"><span class="nav-icon icon-yellow">★</span><span>Juegos</span></button>
+        <button class="nav-item" data-target="diploma"><span class="nav-icon icon-green">✓</span><span>Diploma</span></button>
+      </nav>
+
+      <div class="sidebar-mini-card">
+        <div class="mini-card-title">⌨️ Tips de teclado</div>
+        <ul class="shortcut-list">
+          <li><kbd>F4</kbd><span>Alterna referencias relativas/absolutas al editar una fórmula.</span></li>
+          <li><kbd>Ctrl</kbd> + <kbd>Z</kbd><span>Deshacer.</span></li>
+          <li><kbd>Ctrl</kbd> + <kbd>F</kbd><span>Buscar datos.</span></li>
+          <li><kbd>Ctrl</kbd> + <kbd>Enter</kbd><span>Rellenar el rango seleccionado.</span></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-mini-card formula-mini">
+        <div class="mini-card-title">🧠 Regla clave</div>
+        <p>Ordena las condiciones de <strong>mayor a menor exigencia</strong> para evitar resultados incorrectos.</p>
+      </div>
+
+      <button id="resetProgress" class="ghost-button sidebar-reset">Reiniciar progreso</button>
+    </aside>
+
+    <div id="sidebarBackdrop" class="sidebar-backdrop"></div>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button id="openSidebar" class="hamburger" aria-label="Abrir menú">☰</button>
+        <div class="topbar-title">
+          <span class="topbar-kicker">Google Sheets · Lógica aplicada</span>
+          <h2>Función SI Anidada</h2>
+        </div>
+        <div class="topbar-actions">
+          <div class="progress-pill" title="Progreso general">
+            <span id="progressPercent">0%</span>
+            <div class="progress-pill-track"><i id="progressPillBar"></i></div>
+          </div>
+          <button id="userMenuButton" class="user-chip" aria-label="Datos del estudiante">
+            <span id="userInitials">ET</span>
+            <span class="user-chip-copy"><b id="userNameTop">Estudiante</b><small id="userSectionTop">MONET</small></span>
+          </button>
+        </div>
+      </header>
+
+      <div class="content-wrap">
+        <!-- INICIO -->
+        <section id="inicio" class="page-section active-section">
+          <div class="hero-card">
+            <div class="hero-content">
+              <span class="hero-badge">2.º de Secundaria · SCM</span>
+              <h1>Convierte decisiones en fórmulas.</h1>
+              <p>Domina la <strong>Función SI Anidada</strong> con ejemplos, retos, videos y juegos diseñados para aprender haciendo.</p>
+              <div class="hero-actions">
+                <button class="primary-button" data-go="teoria">Empezar la lección</button>
+                <button class="secondary-button" data-go="juegos">Ir a los retos</button>
+              </div>
+              <div class="motivation-line">“Cada fórmula correcta empieza con una buena pregunta lógica.”</div>
+            </div>
+            <div class="hero-mascot">
+              <img src="assets/mascota-scm.png" alt="Mascota SCM dando pulgar arriba" />
+            </div>
+          </div>
+
+          <div class="dashboard-grid">
+            <article class="stat-card">
+              <span class="stat-icon">🎯</span>
+              <div><small>Objetivo</small><strong>Tomar decisiones con 3 o más resultados</strong></div>
+            </article>
+            <article class="stat-card">
+              <span class="stat-icon">🧩</span>
+              <div><small>Retos</small><strong>4 juegos interactivos</strong></div>
+            </article>
+            <article class="stat-card">
+              <span class="stat-icon">🏆</span>
+              <div><small>Meta final</small><strong>Desbloquear tu diploma</strong></div>
+            </article>
+          </div>
+
+          <article class="panel progress-panel">
+            <div class="panel-heading">
+              <div><span class="eyebrow dark">Tu ruta de aprendizaje</span><h3>Progreso general</h3></div>
+              <strong id="progressLarge">0%</strong>
+            </div>
+            <div class="big-progress"><i id="progressLargeBar"></i></div>
+            <div id="milestoneGrid" class="milestone-grid"></div>
+          </article>
+
+          <div class="two-col-grid">
+            <article class="panel">
+              <span class="eyebrow dark">Antes de comenzar</span>
+              <h3>¿Qué es “anidar”?</h3>
+              <p>Anidar significa colocar una función dentro de otra. En este tema, un <code>SI</code> aparece dentro del resultado falso de otro <code>SI</code>, creando una cadena de decisiones.</p>
+              <div class="code-card"><code>=SI(condición1; resultado1; SI(condición2; resultado2; resultado3))</code></div>
+            </article>
+            <article class="panel challenge-card">
+              <span class="eyebrow dark">Mini reto</span>
+              <h3>Piensa como una hoja de cálculo</h3>
+              <p>Si una nota es 18, ¿qué condición debería evaluarse primero: <strong>≥ 11</strong> o <strong>≥ 18</strong>?</p>
+              <div class="quick-choice">
+                <button data-quick-answer="wrong">≥ 11</button>
+                <button data-quick-answer="correct">≥ 18</button>
+              </div>
+              <p id="quickChoiceFeedback" class="inline-feedback"></p>
+            </article>
+          </div>
+        </section>
+
+        <!-- TEORÍA -->
+        <section id="teoria" class="page-section">
+          <div class="section-heading">
+            <div><span class="section-label">01 · Comprende</span><h1>Teoría: Función SI Anidada</h1><p>De una decisión simple a una cadena lógica ordenada.</p></div>
+            <button class="completion-button" data-complete="theory">✓ Marcar teoría como revisada</button>
+          </div>
+
+          <div class="theory-grid">
+            <article class="panel accent-panel">
+              <span class="number-tag">1</span>
+              <h3>Primero: recuerda el SI simple</h3>
+              <p>La función <code>SI</code> evalúa una condición y devuelve un resultado si es verdadera y otro si es falsa.</p>
+              <div class="formula-display">=SI(A2&gt;=11; "APROBADO"; "EN PROCESO")</div>
+              <ul class="clean-list">
+                <li><strong>A2&gt;=11</strong> → condición lógica.</li>
+                <li><strong>"APROBADO"</strong> → resultado si se cumple.</li>
+                <li><strong>"EN PROCESO"</strong> → resultado si no se cumple.</li>
+              </ul>
+            </article>
+
+            <article class="panel accent-panel alt">
+              <span class="number-tag">2</span>
+              <h3>Luego: agrega más caminos</h3>
+              <p>Cuando necesitas 3 o más resultados, puedes colocar otro <code>SI</code> dentro de la fórmula.</p>
+              <div class="formula-display wrap">=SI(B2&gt;=18; "AD"; SI(B2&gt;=14; "A"; SI(B2&gt;=11; "B"; "C")))</div>
+              <p class="note-box">💡 En configuraciones regionales distintas, Google Sheets puede usar coma <code>,</code> en lugar de punto y coma <code>;</code>.</p>
+            </article>
+          </div>
+
+          <article class="panel decision-panel">
+            <div class="panel-heading compact"><div><span class="eyebrow dark">Infografía interactiva</span><h3>El árbol de decisiones</h3></div><span class="chip">De mayor a menor</span></div>
+            <div class="decision-tree">
+              <div class="decision-node root">Nota del estudiante</div>
+              <div class="tree-arrow">↓</div>
+              <div class="decision-node question">¿Nota ≥ 18?</div>
+              <div class="branch-row"><span>✅ Sí → <b>AD</b></span><span>❌ No → seguir</span></div>
+              <div class="tree-arrow">↓</div>
+              <div class="decision-node question">¿Nota ≥ 14?</div>
+              <div class="branch-row"><span>✅ Sí → <b>A</b></span><span>❌ No → seguir</span></div>
+              <div class="tree-arrow">↓</div>
+              <div class="decision-node question">¿Nota ≥ 11?</div>
+              <div class="branch-row"><span>✅ Sí → <b>B</b></span><span>❌ No → <b>C</b></span></div>
+            </div>
+          </article>
+
+          <div class="two-col-grid">
+            <article class="panel">
+              <span class="eyebrow dark">Método SCM</span>
+              <h3>4 pasos para construirla</h3>
+              <ol class="step-list">
+                <li><span>1</span><div><b>Define los resultados</b><small>¿Cuántas categorías necesitas?</small></div></li>
+                <li><span>2</span><div><b>Ordena las condiciones</b><small>Empieza por la más exigente.</small></div></li>
+                <li><span>3</span><div><b>Anida los SI</b><small>Cada “no” abre la siguiente pregunta.</small></div></li>
+                <li><span>4</span><div><b>Prueba casos límite</b><small>Revisa 10, 11, 13, 14, 17 y 18.</small></div></li>
+              </ol>
+            </article>
+
+            <article class="panel formula-lab">
+              <span class="eyebrow dark">Laboratorio</span>
+              <h3>Prueba la lógica</h3>
+              <label class="field"><span>Escribe una nota (0–20)</span><input id="gradeInput" type="number" min="0" max="20" step="1" placeholder="Ej. 16" /></label>
+              <button id="evaluateGrade" class="primary-button">Evaluar nota</button>
+              <div id="gradeResult" class="lab-result muted">Aquí aparecerá el resultado.</div>
+              <div class="formula-display small">=SI(B2&gt;=18;"AD";SI(B2&gt;=14;"A";SI(B2&gt;=11;"B";"C")))</div>
+            </article>
+          </div>
+
+          <article class="panel mistakes-panel">
+            <span class="eyebrow dark">Evita estos errores</span>
+            <h3>3 fallas frecuentes</h3>
+            <div class="mistake-grid">
+              <div><b>01</b><span>Condiciones mal ordenadas</span><p>Si preguntas primero “≥ 11”, una nota 18 ya cumple y nunca llega a “≥ 18”.</p></div>
+              <div><b>02</b><span>Paréntesis incompletos</span><p>Cada <code>SI(</code> abierto necesita su cierre correspondiente.</p></div>
+              <div><b>03</b><span>Texto sin comillas</span><p>Resultados como <code>"AD"</code> o <code>"Aprobado"</code> deben ir entre comillas.</p></div>
+            </div>
+          </article>
+        </section>
+
+        <!-- MULTIMEDIA -->
+        <section id="multimedia" class="page-section">
+          <div class="section-heading">
+            <div><span class="section-label">02 · Observa</span><h1>Multimedia e infografías</h1><p>Refuerza el concepto con explicaciones visuales y ejemplos guiados.</p></div>
+            <button class="completion-button" data-complete="multimedia">✓ Marcar multimedia como revisada</button>
+          </div>
+
+          <div class="video-grid">
+            <article class="video-card">
+              <div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/uXZupUDjtCo" title="Curso Google Sheets - Función SI Anidada" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+              <div class="video-copy"><span class="chip">SI anidada</span><h3>Función SI Anidada en Google Sheets</h3><p>Video de apoyo para comprender decisiones con múltiples criterios.</p></div>
+            </article>
+            <article class="video-card">
+              <div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/PBjqgd1Kp5U" title="Función SI e IFS en Google Sheets" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+              <div class="video-copy"><span class="chip">Comparación</span><h3>SI, múltiples condiciones e IFS</h3><p>Útil para comparar la lógica del SI anidado con otras alternativas de Google Sheets.</p></div>
+            </article>
+          </div>
+
+          <article class="panel infographic-panel">
+            <div class="panel-heading"><div><span class="eyebrow dark">Infografía</span><h3>Mapa mental de una fórmula</h3></div><span class="chip">Lectura visual</span></div>
+            <div class="formula-map">
+              <div class="formula-map-center">SI ANIDADA</div>
+              <div class="map-item one"><span>1</span><b>Pregunta</b><small>¿Qué quiero comprobar?</small></div>
+              <div class="map-item two"><span>2</span><b>Verdadero</b><small>¿Qué pasa si se cumple?</small></div>
+              <div class="map-item three"><span>3</span><b>Otro SI</b><small>¿Qué pregunto si no?</small></div>
+              <div class="map-item four"><span>4</span><b>Cierre</b><small>Paréntesis completos.</small></div>
+            </div>
+          </article>
+
+          <article class="panel practice-story">
+            <div>
+              <span class="eyebrow dark">Caso práctico</span>
+              <h3>Semáforo de rendimiento</h3>
+              <p>Imagina que en una hoja deseas mostrar una categoría según un porcentaje:</p>
+              <div class="legend-row"><span class="legend green">90–100 Excelente</span><span class="legend blue">70–89 Logrado</span><span class="legend amber">50–69 En proceso</span><span class="legend red">0–49 Reforzar</span></div>
+            </div>
+            <div class="formula-display wrap">=SI(C2&gt;=90;"Excelente";SI(C2&gt;=70;"Logrado";SI(C2&gt;=50;"En proceso";"Reforzar")))</div>
+          </article>
+        </section>
+
+        <!-- JUEGOS -->
+        <section id="juegos" class="page-section">
+          <div class="section-heading">
+            <div><span class="section-label">03 · Practica</span><h1>Zona de juegos</h1><p>Aprender lógica también puede sentirse como un reto.</p></div>
+            <div class="score-badge">⭐ <span id="totalStars">0</span> estrellas</div>
+          </div>
+
+          <div class="game-tabs" role="tablist" aria-label="Juegos">
+            <button class="game-tab active" data-game="crossword" role="tab">🧩 Crucigrama</button>
+            <button class="game-tab" data-game="mental" role="tab">🧠 Reto mental</button>
+            <button class="game-tab" data-game="wordsearch" role="tab">🔎 Sopa de letras</button>
+            <button class="game-tab" data-game="quiz" role="tab">✅ Cuestionario</button>
+          </div>
+
+          <div class="game-stage">
+            <section id="game-crossword" class="game-panel active-game">
+              <div class="game-heading"><div><span class="chip">Juego 1</span><h3>Crucigrama lógico</h3><p>Completa 5 conceptos del tema. Escribe una letra por casilla.</p></div><span class="game-status" data-status="crossword">Pendiente</span></div>
+              <div class="crossword-layout">
+                <div id="crosswordGrid" class="crossword-grid" aria-label="Crucigrama"></div>
+                <div class="clue-card">
+                  <h4>Pistas</h4>
+                  <ol>
+                    <li><b>1 Horizontal:</b> Parte de una fórmula que se evalúa como verdadera o falsa.</li>
+                    <li><b>2 Vertical:</b> Acción de colocar una función dentro de otra.</li>
+                    <li><b>3 Horizontal:</b> Dato que devuelve una fórmula.</li>
+                    <li><b>4 Vertical:</b> Resultado lógico opuesto a verdadero.</li>
+                    <li><b>5 Horizontal:</b> Función lógica de dos letras usada en Google Sheets.</li>
+                  </ol>
+                  <button id="checkCrossword" class="primary-button">Comprobar crucigrama</button>
+                  <p id="crosswordFeedback" class="inline-feedback"></p>
+                </div>
+              </div>
+            </section>
+
+            <section id="game-mental" class="game-panel">
+              <div class="game-heading"><div><span class="chip">Juego 2</span><h3>Reto mental: ¿qué devolverá?</h3><p>Responde 6 mini situaciones sin escribir fórmulas completas.</p></div><span class="game-status" data-status="mental">Pendiente</span></div>
+              <div id="mentalGame" class="mental-game"></div>
+            </section>
+
+            <section id="game-wordsearch" class="game-panel">
+              <div class="game-heading"><div><span class="chip">Juego 3</span><h3>Sopa de letras</h3><p>Encuentra exactamente 10 palabras. Toca una casilla inicial y luego la casilla final.</p></div><span class="game-status" data-status="wordsearch">Pendiente</span></div>
+              <div class="wordsearch-layout">
+                <div id="wordSearchGrid" class="wordsearch-grid" aria-label="Sopa de letras"></div>
+                <div class="word-list-card">
+                  <h4>10 palabras</h4>
+                  <div id="wordList" class="word-list"></div>
+                  <p id="wordSearchFeedback" class="inline-feedback">Selecciona inicio y fin de una palabra.</p>
+                  <button id="resetWordSearch" class="ghost-button">Nueva sopa</button>
+                </div>
+              </div>
+            </section>
+
+            <section id="game-quiz" class="game-panel">
+              <div class="game-heading"><div><span class="chip">Juego 4</span><h3>Cuestionario de 10 preguntas</h3><p>Recibe retroalimentación inmediata después de cada respuesta.</p></div><span class="game-status" data-status="quiz">Pendiente</span></div>
+              <div id="quizContainer" class="quiz-container"></div>
+            </section>
+          </div>
+        </section>
+
+        <!-- DIPLOMA -->
+        <section id="diploma" class="page-section">
+          <div class="section-heading">
+            <div><span class="section-label">04 · Celebra</span><h1>Generador de diploma</h1><p>Completa la ruta y descarga un reconocimiento personalizado.</p></div>
+          </div>
+
+          <div class="diploma-grid">
+            <article class="panel diploma-control-card">
+              <img src="assets/mascota-scm.png" alt="Mascota SCM" class="diploma-mascot" />
+              <span id="diplomaLockChip" class="lock-chip">🔒 Aún bloqueado</span>
+              <h3 id="diplomaTitle">Te falta un poco para llegar a la meta</h3>
+              <p id="diplomaMessage">Completa teoría, multimedia y los cuatro juegos para habilitar tu diploma.</p>
+              <div class="big-progress"><i id="diplomaProgressBar"></i></div>
+              <strong id="diplomaProgressText">0% completado</strong>
+              <div class="diploma-actions">
+                <button id="generateDiploma" class="primary-button" disabled>Generar diploma</button>
+                <button id="downloadDiploma" class="secondary-button" disabled>Descargar PNG</button>
+              </div>
+              <p class="helper-text">El diploma usa el nombre y sección registrados al ingresar.</p>
+            </article>
+
+            <article class="panel diploma-preview-card">
+              <canvas id="diplomaCanvas" width="1600" height="1100" aria-label="Vista previa del diploma"></canvas>
+              <div id="diplomaPlaceholder" class="diploma-placeholder">
+                <span>🏅</span>
+                <b>Tu diploma aparecerá aquí</b>
+                <small>Completa la ruta para desbloquearlo.</small>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span>SCM · 2.º de Secundaria · Función SI Anidada para Google Sheets</span>
+        <span>Aprende · Practica · Comprueba · Celebra</span>
+      </footer>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

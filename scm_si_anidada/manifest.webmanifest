@@ -1,0 +1,11 @@
+{
+  "name": "SCM · Función SI Anidada",
+  "short_name": "SCM SI",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f5f7fb",
+  "theme_color": "#071f57",
+  "icons": [
+    {"src": "assets/logo-scm.png", "sizes": "512x512", "type": "image/png"}
+  ]
+}
