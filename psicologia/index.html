@@ -1,1 +1,379 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0d2a63" />
+  <title>Área de Psicología | Colegio Sagrado Corazón de La Molina</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="loginView" class="login-view" aria-live="polite">
+    <div class="login-overlay"></div>
+    <div class="welcome-shell">
+      <section class="welcome-brand" aria-label="Presentación de la plataforma">
+        <div class="welcome-topline"><span class="secure-dot"></span> Plataforma institucional para docentes</div>
+        <div class="welcome-logo-row">
+          <img src="assets/logo_scm.png" alt="Colegio Sagrado Corazón de La Molina" class="welcome-logo" />
+          <div>
+            <p class="welcome-school">COLEGIO SAGRADO CORAZÓN DE LA MOLINA</p>
+            <div class="welcome-rule"></div>
+          </div>
+        </div>
+        <span class="welcome-kicker">ÁREA DE PSICOLOGÍA · FORMACIÓN DOCENTE</span>
+        <h1>Relaciones que educan,<br><em>vínculos que transforman.</em></h1>
+        <p class="welcome-lead">Una experiencia interactiva para fortalecer la empatía, la escucha activa, la comunicación asertiva y el manejo constructivo de conflictos en el aula.</p>
+        <div class="welcome-badges" aria-label="Características de la plataforma">
+          <span>🤝 Relaciones interpersonales</span><span>🧠 Desarrollo socioemocional</span><span>🎓 Certificación al 100%</span>
+        </div>
+        <div class="welcome-signature">
+          <img src="assets/logo_home.png" alt="Programa H.O.M.E." />
+          <img src="assets/logo_wholechild.png" alt="Whole Child - Educación Holística" />
+          <p>Psicología SCM<br><small>Aprender · Conectar · Acompañar</small></p>
+        </div>
+      </section>
 
+      <section class="login-card" aria-label="Acceso docente">
+        <div class="login-card-head">
+          <span class="login-icon">🔐</span>
+          <div><p class="eyebrow">Acceso docente</p><h2>Bienvenido(a)</h2><p>Ingresa tus datos para iniciar el recorrido formativo.</p></div>
+        </div>
+        <form id="loginForm" novalidate>
+          <label>Nombre del docente
+            <input id="teacherName" name="teacherName" autocomplete="name" required placeholder="Ej. Julio Dávila" />
+          </label>
+          <label>Correo institucional
+            <input id="teacherEmail" name="teacherEmail" type="email" autocomplete="email" required placeholder="docente@colegio.edu.pe" />
+          </label>
+          <label>Contraseña de acceso
+            <div class="password-wrap">
+              <input id="password" name="password" type="password" autocomplete="current-password" required placeholder="••••••••" />
+              <button id="togglePassword" type="button" class="ghost-btn" aria-label="Mostrar u ocultar contraseña">Ver</button>
+            </div>
+          </label>
+          <p id="loginError" class="form-error" role="alert"></p>
+          <button class="primary-btn full login-submit" type="submit"><span>Ingresar a la plataforma</span><b>→</b></button>
+        </form>
+        <div class="login-security"><span>✓ Acceso exclusivo para docentes autorizados</span><span>✓ Progreso personalizado</span></div>
+      </section>
+    </div>
+    <div class="welcome-bottom"><span>Área de Psicología</span><span>•</span><span>Colegio Sagrado Corazón de La Molina</span></div>
+  </div>
+
+  <div id="appView" class="app-shell hidden">
+    <aside class="sidebar" id="sidebar">
+      <div class="side-brand">
+        <img src="assets/logo_scm.png" alt="SCM" />
+        <div><strong>Psicología SCM</strong><span>Formación Docente</span></div>
+      </div>
+      <nav id="mainNav" aria-label="Navegación principal">
+        <button class="nav-item active" data-section="inicio">🏠 <span>Inicio</span></button>
+        <button class="nav-item" data-section="definicion">🤝 <span>Definición</span></button>
+        <button class="nav-item" data-section="beneficios">🌱 <span>Beneficios</span></button>
+        <button class="nav-item" data-section="leyes">🧭 <span>7 leyes</span></button>
+        <button class="nav-item" data-section="conflictos">🕊️ <span>Manejo de conflictos</span></button>
+        <button class="nav-item" data-section="tips">💡 <span>Tips docentes</span></button>
+        <button class="nav-item" data-section="infografias">📊 <span>Infografías</span></button>
+        <button class="nav-item" data-section="videos">▶️ <span>Videos</span></button>
+        <button class="nav-item" data-section="juegos">🎮 <span>Juegos</span></button>
+        <button class="nav-item" data-section="diploma">🎓 <span>Diploma</span></button>
+      </nav>
+      <div class="side-progress">
+        <div class="progress-head"><span>Avance general</span><strong id="sidePercent">0%</strong></div>
+        <div class="progress-track"><div id="sideBar" class="progress-fill"></div></div>
+        <small>Completa contenidos y juegos para habilitar tu diploma.</small><div class="autosave-note"><span>●</span> Guardado automático activo</div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button id="menuBtn" class="menu-btn" type="button" aria-label="Abrir menú">☰</button>
+        <div>
+          <p class="eyebrow">Área de Psicología</p>
+          <h2 id="sectionTitle">Bienvenida</h2>
+        </div>
+        <div class="user-chip">
+          <div class="avatar" id="avatar">JD</div>
+          <div><strong id="userName">Docente</strong><span id="userEmail">correo</span></div>
+          <button id="logoutBtn" type="button" class="ghost-btn">Salir</button>
+        </div>
+      </header>
+
+      <section id="inicio" class="content-section active-section">
+        <article class="hero-card">
+          <div class="hero-copy">
+            <span class="pill">Módulo 2 · Relaciones Interpersonales</span>
+            <h3>Construimos vínculos que fortalecen el aprendizaje</h3>
+            <p>Explora estrategias para promover el trabajo en equipo, manejar emociones y fortalecer relaciones interpersonales en la práctica docente.</p>
+            <div class="hero-actions">
+              <button class="primary-btn go-section" data-target="definicion">Comenzar recorrido</button>
+              <button class="secondary-btn go-section" data-target="leyes">Ver las 7 leyes</button>
+            </div>
+          </div>
+          <img src="assets/scene_1.png" alt="Docente acompañando a estudiantes en un ambiente de confianza" />
+        </article>
+
+        <div class="kpi-grid">
+          <article class="kpi"><span>🎯</span><div><strong>Resultado del módulo</strong><p>Identificar beneficios y factores de las relaciones interpersonales para generar entornos de confianza.</p></div></article>
+          <article class="kpi"><span>🧠</span><div><strong>Competencias clave</strong><p>Gestión emocional, empatía, escucha activa y comunicación asertiva.</p></div></article>
+          <article class="kpi"><span>🤝</span><div><strong>Aplicación docente</strong><p>Convivencia, participación, trabajo en equipo y resolución de conflictos.</p></div></article>
+        </div>
+
+        <article class="quote-card">
+          <img src="assets/logo_wholechild.png" alt="Whole Child" />
+          <blockquote>“Las habilidades interpersonales son aquellas que nos permiten establecer vínculos y relaciones estables y efectivas con las personas”.</blockquote>
+          <cite>MINEDU (2017)</cite>
+        </article>
+      </section>
+
+      <section id="definicion" class="content-section">
+        <div class="section-intro">
+          <div><span class="pill">2.1</span><h3>¿Qué son las relaciones interpersonales?</h3><p>Son habilidades que ayudan a establecer vínculos estables y efectivos. En el aula permiten conectar con los estudiantes y construir un ambiente de confianza.</p></div>
+          <img src="assets/scene_3.png" alt="Docente practicando escucha empática con un estudiante" />
+        </div>
+        <div class="concept-grid">
+          <article><span>💗</span><h4>Empatía</h4><p>Comprender y respetar el punto de vista del estudiante.</p></article>
+          <article><span>👂</span><h4>Escucha activa</h4><p>Prestar atención con apertura antes de responder o decidir.</p></article>
+          <article><span>💬</span><h4>Comunicación asertiva</h4><p>Expresar reglas, límites y retroalimentación con respeto y claridad.</p></article>
+          <article><span>🧘</span><h4>Gestión emocional</h4><p>Reconocer y regular emociones para sostener interacciones constructivas.</p></article>
+        </div>
+        <button class="complete-btn" data-complete="definicion">✓ Marcar contenido como revisado</button>
+      </section>
+
+      <section id="beneficios" class="content-section">
+        <div class="section-intro reverse">
+          <div><span class="pill">2.2</span><h3>Beneficios en la labor docente</h3><p>Las relaciones interpersonales fortalecen el clima del aula y favorecen la participación, el trabajo colaborativo y el bienestar de los estudiantes.</p></div>
+          <img src="assets/scene_2.png" alt="Estudiantes trabajando colaborativamente con su docente" />
+        </div>
+        <div class="benefit-list">
+          <article><b>01</b><div><h4>Ambiente de confianza</h4><p>Permite conectar con los estudiantes y promover respeto por las personas y sus ideas.</p></div></article>
+          <article><b>02</b><div><h4>Mayor participación</h4><p>Los estudiantes intervienen con mayor libertad cuando se sienten escuchados, respetados y valorados.</p></div></article>
+          <article><b>03</b><div><h4>Trabajo en equipo</h4><p>La empatía y la comunicación asertiva facilitan cooperación y resolución de conflictos.</p></div></article>
+          <article><b>04</b><div><h4>Menor estrés</h4><p>Un clima de confianza favorece la interacción y permite que los estudiantes se expresen con mayor seguridad.</p></div></article>
+          <article><b>05</b><div><h4>Mayor consciencia</h4><p>Mejorar relaciones también implica revisar la propia conducta con humildad, flexibilidad y compasión.</p></div></article>
+        </div>
+        <button class="complete-btn" data-complete="beneficios">✓ Marcar contenido como revisado</button>
+      </section>
+
+      <section id="leyes" class="content-section">
+        <div class="section-intro">
+          <div><span class="pill">2.3</span><h3>Las 7 leyes de las relaciones interpersonales</h3><p>Selecciona cada ley para ver su aplicación práctica en el aula.</p></div>
+          <img src="assets/scene_6.png" alt="Docente explicando las leyes de las relaciones interpersonales" />
+        </div>
+        <div class="laws-spectrum" aria-label="Resumen visual de las siete leyes">
+          <div><span>01</span><b>🪞</b><small>Cambio personal</small></div>
+          <div><span>02</span><b>🌟</b><small>Mirada positiva</small></div>
+          <div><span>03</span><b>🤝</b><small>Confianza</small></div>
+          <div><span>04</span><b>⚖️</b><small>Ganar–ganar</small></div>
+          <div><span>05</span><b>👂</b><small>Empatía</small></div>
+          <div><span>06</span><b>💬</b><small>Asertividad</small></div>
+          <div><span>07</span><b>🧭</b><small>Persona y conducta</small></div>
+        </div>
+        <div class="laws-layout premium-laws">
+          <div class="laws-tabs" id="lawsTabs"></div>
+          <article class="law-detail" id="lawDetail"></article>
+        </div>
+        <button class="complete-btn" data-complete="leyes">✓ Marcar contenido como revisado</button>
+      </section>
+
+      <section id="conflictos" class="content-section">
+        <div class="section-intro reverse">
+          <div><span class="pill">2.4</span><h3>Relaciones interpersonales en el manejo de conflictos</h3><p>El objetivo no es evitar el conflicto, sino abordarlo mediante acuerdos, escucha y decisiones que preserven el ambiente de confianza.</p></div>
+          <img src="assets/scene_4.png" alt="Docente mediando una conversación entre estudiantes" />
+        </div>
+        <div class="steps-flow">
+          <article><span>1</span><h4>Definición de reglas</h4><p>Establece normas de convivencia y acuerdos claros junto con los estudiantes.</p></article>
+          <div class="arrow">→</div>
+          <article><span>2</span><h4>Aclaración y justificación</h4><p>Invita a expresar y sustentar ideas para ampliar la consciencia y el pensamiento crítico.</p></article>
+          <div class="arrow">→</div>
+          <article><span>3</span><h4>Acuerdos y solución</h4><p>Usa empatía y comunicación asertiva para construir decisiones compartidas.</p></article>
+        </div>
+        <div class="scenario-box">
+          <h4>Simulador rápido de respuesta docente</h4>
+          <p><strong>Situación:</strong> un estudiante interrumpe repetidamente mientras otro compañero expone.</p>
+          <div class="scenario-options">
+            <button type="button" data-feedback="bad">“Eres irrespetuoso, siempre haces lo mismo”.</button>
+            <button type="button" data-feedback="good">“Percibo que este comportamiento no está alineado con los acuerdos de escucha establecidos en clase”.</button>
+            <button type="button" data-feedback="mid">“Cállate y deja hablar a tu compañero”.</button>
+          </div>
+          <p id="scenarioFeedback" class="scenario-feedback" aria-live="polite"></p>
+        </div>
+        <button class="complete-btn" data-complete="conflictos">✓ Marcar contenido como revisado</button>
+      </section>
+
+      <section id="tips" class="content-section">
+        <div class="section-intro">
+          <div><span class="pill">Aplicación práctica</span><h3>Tips para llevarlo al aula</h3><p>Ideas breves para convertir los principios del módulo en acciones observables.</p></div>
+          <img src="assets/scene_7.png" alt="Docente y estudiantes construyendo acuerdos de convivencia" />
+        </div>
+        <div class="tips-grid">
+          <article>🪞<h4>Autoevalúate</h4><p>Después de una clase difícil, identifica qué podrías ajustar tú antes de centrarte solo en la conducta del estudiante.</p></article>
+          <article>🔎<h4>Busca fortalezas</h4><p>Evita etiquetas; describe capacidades y oportunidades concretas de mejora.</p></article>
+          <article>🤝<h4>Construye confianza</h4><p>Cumple acuerdos, escucha de forma coherente y evita humillar en público.</p></article>
+          <article>⚖️<h4>Piensa ganar–ganar</h4><p>Busca soluciones sostenibles en las que se preserve el aprendizaje y la dignidad de todos.</p></article>
+          <article>👂<h4>Escucha antes de decidir</h4><p>Pregunta qué ocurrió y verifica que comprendiste la perspectiva del estudiante.</p></article>
+          <article>🗣️<h4>Describe conductas</h4><p>Habla de hechos observables y acuerdos, no de etiquetas sobre la persona.</p></article>
+        </div>
+        <button class="complete-btn" data-complete="tips">✓ Marcar contenido como revisado</button>
+      </section>
+
+      <section id="infografias" class="content-section">
+        <div class="section-intro reverse">
+          <div><span class="pill">Síntesis visual</span><h3>Infografías del módulo</h3><p>Revisa los principales conceptos en formato visual y usa estas síntesis como recordatorio antes de una sesión.</p></div>
+          <img src="assets/scene_9.png" alt="Actividad socioemocional en el patio del colegio" />
+        </div>
+        <div class="infographic-grid">
+          <article class="info-card blue">
+            <h4>Ruta de una relación saludable</h4>
+            <div class="mini-flow"><span>Escuchar</span><i>→</i><span>Comprender</span><i>→</i><span>Acordar</span><i>→</i><span>Actuar</span></div>
+            <p>Un vínculo se fortalece cuando se combina escucha empática con acuerdos claros y seguimiento.</p>
+          </article>
+          <article class="info-card red">
+            <h4>Retroalimentación asertiva</h4>
+            <div class="formula"><b>Hecho observado</b> + <b>Acuerdo esperado</b> + <b>Próximo paso</b></div>
+            <p>Describe la conducta y su impacto sin convertirla en una etiqueta sobre la persona.</p>
+          </article>
+          <article class="info-card green">
+            <h4>Clima de confianza</h4>
+            <div class="ring"><span>Respeto</span><span>Empatía</span><span>Participación</span><span>Seguridad</span></div>
+          </article>
+        </div>
+        <figure class="wide-image"><img src="assets/scene_10.png" alt="Educación holística en el Colegio Sagrado Corazón de La Molina" /><figcaption>Visión integral: dimensiones cognitivas, emocionales, sociales, físicas, artísticas y espirituales.</figcaption></figure>
+        <button class="complete-btn" data-complete="infografias">✓ Marcar contenido como revisado</button>
+      </section>
+
+
+      <section id="videos" class="content-section">
+        <div class="video-hero">
+          <div>
+            <span class="pill">Recursos audiovisuales</span>
+            <h3>Aprender observando: empatía y comunicación en la práctica docente</h3>
+            <p>Dos recursos seleccionados para ampliar el contenido del módulo y llevarlo a situaciones concretas de convivencia, comunicación y acompañamiento educativo.</p>
+          </div>
+          <div class="video-hero-badge"><span>2</span><strong>videos<br>recomendados</strong></div>
+        </div>
+
+        <div class="video-grid">
+          <article class="video-card">
+            <div class="video-frame">
+              <iframe src="https://www.youtube-nocookie.com/embed/QFcMebbYqmE" title="Comunicación asertiva, empática y gestión del conflicto - Ministerio de Educación del Perú" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="video-copy">
+              <span class="video-source">MINEDU · Perú</span>
+              <h4>Comunicación asertiva y empática para relaciones saludables</h4>
+              <p>Complementa el módulo con orientaciones sobre comunicación asertiva, empatía y gestión del conflicto dentro de la comunidad educativa.</p>
+              <div class="video-focus"><b>Observa especialmente:</b><span>escucha</span><span>empatía</span><span>conflicto</span></div>
+              <a class="video-link" href="https://www.youtube.com/watch?v=QFcMebbYqmE" target="_blank" rel="noopener noreferrer">Abrir en YouTube ↗</a>
+            </div>
+          </article>
+
+          <article class="video-card">
+            <div class="video-frame">
+              <iframe src="https://www.youtube-nocookie.com/embed/zjbyz4DI864" title="Comunicación asertiva para docentes - Universidad Santo Tomás Bucaramanga" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="video-copy">
+              <span class="video-source">Universidad Santo Tomás</span>
+              <h4>Comunicación asertiva para docentes</h4>
+              <p>Refuerza cómo expresar instrucciones, límites y retroalimentación de manera clara y respetuosa al inicio y durante el desarrollo de las clases.</p>
+              <div class="video-focus"><b>Observa especialmente:</b><span>claridad</span><span>respeto</span><span>retroalimentación</span></div>
+              <a class="video-link" href="https://www.youtube.com/watch?v=zjbyz4DI864" target="_blank" rel="noopener noreferrer">Abrir en YouTube ↗</a>
+            </div>
+          </article>
+        </div>
+
+        <article class="video-reflection">
+          <div class="reflection-icon">✍️</div>
+          <div><h4>Pregunta de reflexión</h4><p>¿Qué cambio concreto podrías aplicar en tu próxima clase para que un estudiante se sienta más escuchado, respetado y valorado?</p></div>
+        </article>
+        <button class="complete-btn" data-complete="videos">✓ Marcar videos como revisados</button>
+      </section>
+
+      <section id="juegos" class="content-section">
+        <div class="games-head"><div><span class="pill">Aprende jugando</span><h3>Juegos didácticos</h3><p>Completa los tres retos para sumar progreso a tu certificación.</p></div><img src="assets/scene_5.png" alt="Docentes trabajando colaborativamente" /></div>
+        <div class="game-tabs">
+          <button type="button" class="game-tab active" data-game="memoryGame">🧠 Memoria</button>
+          <button type="button" class="game-tab" data-game="wordGame">🔤 Sopa de letras</button>
+          <button type="button" class="game-tab" data-game="crossGame">✏️ Crucigrama</button>
+        </div>
+
+        <article id="memoryGame" class="game-panel active-game">
+          <div class="game-title"><div><h4>Memoria: concepto + aplicación</h4><p>Encuentra las 6 parejas relacionadas.</p></div><button type="button" id="resetMemory" class="secondary-btn">Reiniciar</button></div>
+          <div id="memoryGrid" class="memory-grid"></div>
+          <p id="memoryStatus" class="game-status" aria-live="polite"></p>
+        </article>
+
+        <article id="wordGame" class="game-panel">
+          <div class="game-title"><div><h4>Sopa de letras</h4><p>Selecciona las letras de una palabra en orden y pulsa “Validar selección”.</p></div><button type="button" id="resetWord" class="secondary-btn">Reiniciar</button></div>
+          <div class="word-layout"><div id="wordGrid" class="word-grid"></div><div><h5>Palabras</h5><ul id="wordList" class="word-list"></ul><button type="button" id="validateWord" class="primary-btn">Validar selección</button><button type="button" id="clearWord" class="ghost-btn">Limpiar selección</button><p id="wordStatus" class="game-status" aria-live="polite"></p></div></div>
+        </article>
+
+        <article id="crossGame" class="game-panel">
+          <div class="game-title"><div><h4>Crucigrama de relaciones interpersonales</h4><p>Completa las palabras a partir de las pistas.</p></div><button type="button" id="resetCross" class="secondary-btn">Reiniciar</button></div>
+          <div class="cross-layout"><div id="crossGrid" class="cross-grid" aria-label="Crucigrama"></div><div class="clues"><h5>Pistas</h5><ol><li>Capacidad para comprender el punto de vista de otra persona.</li><li>Base relacional que genera seguridad.</li><li>Comunicación clara y respetuosa.</li><li>Normas que orientan la convivencia.</li><li>Valor que reconoce la dignidad de los demás.</li></ol><button type="button" id="validateCross" class="primary-btn">Comprobar crucigrama</button><p id="crossStatus" class="game-status" aria-live="polite"></p></div></div>
+        </article>
+      </section>
+
+      <section id="diploma" class="content-section">
+        <div class="diploma-lock" id="diplomaLock">
+          <div class="lock-icon">🔒</div>
+          <h3>Diploma bloqueado</h3>
+          <p>Completa el 100% de la plataforma para habilitar tu certificación.</p>
+          <div class="progress-track big"><div id="diplomaBar" class="progress-fill"></div></div>
+          <strong id="diplomaPercent">0%</strong>
+        </div>
+        <div class="diploma-area hidden" id="diplomaArea">
+          <div id="diplomaPreview" class="diploma-preview">
+            <div class="diploma-top"><img src="assets/logo_scm.png" alt="SCM" /><div><span>COLEGIO SAGRADO CORAZÓN DE LA MOLINA</span><strong>ÁREA DE PSICOLOGÍA</strong></div><img src="assets/logo_wholechild.png" alt="Whole Child" /></div>
+            <div class="diploma-body"><span class="diploma-label">DIPLOMA DE FINALIZACIÓN</span><p>Se otorga el presente reconocimiento a</p><h3 id="diplomaName">Nombre del docente</h3><p>por haber completado satisfactoriamente el módulo</p><h4>Relaciones Interpersonales en la Práctica Docente</h4><p>fortaleciendo herramientas de empatía, escucha activa, comunicación asertiva y manejo de conflictos.</p><div class="diploma-date"><span>Fecha de conclusión</span><strong id="diplomaDate">—</strong></div></div>
+            <div class="diploma-foot"><span>Área de Psicología</span><span>Formación Docente SCM</span></div>
+          </div>
+          <div class="diploma-actions"><button type="button" id="downloadDiploma" class="primary-btn">Descargar diploma PNG</button><button type="button" id="printDiploma" class="secondary-btn">Imprimir / Guardar PDF</button></div>
+        </div>
+      </section>
+
+      <footer class="app-footer">
+        <img src="assets/logo_home.png" alt="H.O.M.E." />
+        <p>Contenido formativo basado en el Módulo 2: Relaciones Interpersonales. Área de Psicología · Colegio Sagrado Corazón de La Molina.</p>
+        <img src="assets/logo_wholechild.png" alt="Whole Child" />
+      </footer>
+    </main>
+
+    <aside class="right-tools" id="rightTools" aria-label="Herramientas rápidas">
+      <button type="button" class="tool-btn" id="zoomInBtn" title="Aumentar texto" aria-label="Aumentar tamaño del texto">A+</button>
+      <button type="button" class="tool-btn" id="zoomOutBtn" title="Reducir texto" aria-label="Reducir tamaño del texto">A−</button>
+      <button type="button" class="tool-btn" id="zoomResetBtn" title="Restablecer tamaño" aria-label="Restablecer tamaño del texto">100%</button>
+      <span class="tool-divider" aria-hidden="true"></span>
+      <button type="button" class="tool-btn icon" id="tipBtn" title="Tip docente" aria-label="Mostrar tip docente">💡</button>
+      <button type="button" class="tool-btn icon" id="phraseBtn" title="Frase inspiradora" aria-label="Mostrar frase inspiradora">💬</button>
+      <button type="button" class="tool-btn icon" id="challengeBtn" title="Reto práctico" aria-label="Mostrar reto práctico">🎯</button>
+      <button type="button" class="tool-btn icon" id="focusBtn" title="Modo lectura" aria-label="Activar modo lectura">👁️</button>
+      <span class="tool-divider" aria-hidden="true"></span>
+      <button type="button" class="tool-btn icon save-tool" id="saveStatusBtn" title="Guardar avance ahora" aria-label="Guardar avance ahora">💾</button>
+      <span id="saveStateLabel" class="save-state-label">Guardado automático</span>
+      <button type="button" class="tool-btn icon reset-tool" id="resetProgressBtn" title="Reiniciar mi progreso" aria-label="Reiniciar mi progreso">↺</button>
+      <div class="tool-popover hidden" id="toolPopover" role="status" aria-live="polite">
+        <button type="button" id="closeToolPopover" class="tool-close" aria-label="Cerrar">×</button>
+        <span id="toolPopoverIcon" class="tool-popover-icon">💡</span>
+        <strong id="toolPopoverTitle">Tip docente</strong>
+        <p id="toolPopoverText"></p>
+        <button type="button" id="nextToolContent" class="secondary-btn compact">Mostrar otro</button>
+      </div>
+    </aside>
+  </div>
+
+  <div class="image-lightbox hidden" id="imageLightbox" role="dialog" aria-modal="true" aria-label="Vista ampliada de imagen">
+    <div class="lightbox-toolbar">
+      <button type="button" id="lightboxMinus" aria-label="Alejar imagen">−</button>
+      <span id="lightboxScale">100%</span>
+      <button type="button" id="lightboxPlus" aria-label="Acercar imagen">+</button>
+      <button type="button" id="lightboxReset" aria-label="Restablecer zoom">↺</button>
+      <button type="button" id="lightboxClose" aria-label="Cerrar imagen">×</button>
+    </div>
+    <div class="lightbox-stage" id="lightboxStage">
+      <img id="lightboxImage" alt="Imagen ampliada" />
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
