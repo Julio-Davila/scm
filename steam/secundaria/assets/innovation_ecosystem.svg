@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" role="img" aria-label="Ilustración de innovación con robótica, energía solar, planta y crecimiento">
+<defs>
+ <linearGradient id="bg" x1="0" x2="1"><stop stop-color="#071d49"/><stop offset="1" stop-color="#173f7a"/></linearGradient>
+ <linearGradient id="red" x1="0" x2="1"><stop stop-color="#d91920"/><stop offset="1" stop-color="#ff4b55"/></linearGradient>
+ <filter id="s"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-opacity=".16"/></filter>
+</defs>
+<rect width="720" height="520" rx="36" fill="url(#bg)"/>
+<circle cx="620" cy="88" r="110" fill="#fff" opacity=".05"/><circle cx="95" cy="440" r="130" fill="#d91920" opacity=".12"/>
+<!-- growth chart -->
+<g transform="translate(465 84)" filter="url(#s)"><rect width="185" height="140" rx="22" fill="#fff"/><path d="M28 105L65 78l34 13 48-53" fill="none" stroke="#d91920" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/><path d="M134 37h23v23" fill="none" stroke="#d91920" stroke-width="10" stroke-linecap="round"/><rect x="28" y="112" width="18" height="12" rx="4" fill="#37a865"/><rect x="62" y="98" width="18" height="26" rx="4" fill="#2f80ed"/><rect x="96" y="84" width="18" height="40" rx="4" fill="#ffba38"/><rect x="130" y="66" width="18" height="58" rx="4" fill="#d91920"/></g>
+<!-- robot -->
+<g transform="translate(65 112)" filter="url(#s)"><rect x="38" y="40" width="170" height="154" rx="32" fill="#fff"/><rect x="70" y="77" width="106" height="58" rx="18" fill="#071d49"/><circle cx="100" cy="106" r="10" fill="#4cc9f0"/><circle cx="148" cy="106" r="10" fill="#4cc9f0"/><path d="M101 155c17 14 32 14 48 0" fill="none" stroke="#d91920" stroke-width="8" stroke-linecap="round"/><path d="M124 40V15" stroke="#fff" stroke-width="12" stroke-linecap="round"/><circle cx="124" cy="11" r="11" fill="#ffba38"/><rect x="8" y="85" width="35" height="72" rx="16" fill="#d91920"/><rect x="203" y="85" width="35" height="72" rx="16" fill="#d91920"/><rect x="70" y="195" width="36" height="76" rx="16" fill="#fff"/><rect x="140" y="195" width="36" height="76" rx="16" fill="#fff"/></g>
+<!-- solar + plant -->
+<g transform="translate(320 280)" filter="url(#s)"><path d="M25 102h180l-22 92H5z" fill="#2f80ed" stroke="#fff" stroke-width="6"/><path d="M55 104l-18 88M95 104l-9 88M135 104l2 88M175 104l10 88M15 145h180" stroke="#bfe3ff" stroke-width="4"/><path d="M105 196v42M65 240h83" stroke="#fff" stroke-width="8" stroke-linecap="round"/></g>
+<g transform="translate(540 285)" filter="url(#s)"><path d="M70 170V70" stroke="#37a865" stroke-width="14" stroke-linecap="round"/><path d="M72 112c-45 0-58-38-59-69 39 1 66 20 59 69Z" fill="#56c271"/><path d="M68 92c43-2 62-34 67-61-39-4-69 15-67 61Z" fill="#37a865"/><path d="M34 168h72l-10 60H44z" fill="url(#red)"/><ellipse cx="70" cy="169" rx="38" ry="10" fill="#ff7c83"/></g>
+<!-- idea bulb -->
+<g transform="translate(278 70)"><circle cx="70" cy="70" r="56" fill="#ffcf4d"/><path d="M50 128h40M55 146h30" stroke="#fff" stroke-width="12" stroke-linecap="round"/><path d="M46 76c0-20 12-34 27-34 17 0 30 14 30 31 0 14-7 22-16 31-7 7-10 13-10 20H60c0-8-3-14-10-21-8-8-14-16-14-27" fill="#fff" opacity=".92"/></g>
+<text x="360" y="480" fill="#fff" font-family="Arial, sans-serif" font-weight="700" font-size="26" text-anchor="middle">IMAGINA · CREA · PRODUCE · TRANSFORMA</text>
+</svg>

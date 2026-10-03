@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 420" role="img" aria-label="Ilustración de emprendimiento sostenible con planta y panel solar">
+<defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="#0d2d61"/><stop offset="1" stop-color="#071d49"/></linearGradient></defs>
+<rect width="620" height="420" rx="34" fill="url(#g)"/>
+<circle cx="96" cy="85" r="54" fill="#ffcf4d" opacity=".95"/>
+<g transform="translate(55 210)"><path d="M0 70h250l-28 120H28z" fill="#2f80ed" stroke="#fff" stroke-width="6"/><path d="M50 72 30 188M100 72 88 188M150 72l0 116M200 72l17 116M10 126h230" stroke="#bfe3ff" stroke-width="4"/></g>
+<g transform="translate(360 84)"><path d="M105 206V82" stroke="#56c271" stroke-width="16" stroke-linecap="round"/><path d="M105 132c-59 0-85-47-88-87 51 1 91 28 88 87Z" fill="#56c271"/><path d="M104 112c55 0 87-43 93-78-50-5-91 19-93 78Z" fill="#37a865"/><path d="M55 205h100l-14 88H69z" fill="#d91920"/></g>
+<path d="M420 334c46-25 83-19 132 0" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity=".7"/>
+<text x="310" y="388" text-anchor="middle" font-family="Arial" font-weight="700" font-size="23" fill="#fff">INNOVACIÓN QUE GENERA VALOR</text>
+</svg>
