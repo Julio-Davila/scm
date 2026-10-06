@@ -1,0 +1,8 @@
+{
+  "name": "scm-business-innovation-fair",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Plataforma educativa interactiva SCM Business & Innovation Fair - Secundaria",
+  "scripts": {"start":"node server.js"},
+  "engines": {"node": ">=18"}
+}

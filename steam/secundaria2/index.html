@@ -1,1 +1,338 @@
+<!DOCTYPE html>
 
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
+<meta content="#0b2a5b" name="theme-color"/>
+<title>SCM Business &amp; Innovation Fair | Plataforma Educativa</title>
+<link href="https://www.youtube.com" rel="preconnect"/>
+<link href="styles.css" rel="stylesheet"/>
+</head>
+<body>
+<svg aria-hidden="true" class="svg-sprite">
+<symbol id="i-home" viewbox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5v9a1.5 1.5 0 0 1-1.5 1.5H15v-6H9v6H4.5A1.5 1.5 0 0 1 3 19.5z"></path></symbol>
+<symbol id="i-target" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1.5"></circle></symbol>
+<symbol id="i-route" viewbox="0 0 24 24"><path d="M5 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm14 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM7 6h5a4 4 0 0 1 4 4v0a4 4 0 0 1-4 4H9a4 4 0 0 0-4 4v0"></path></symbol>
+<symbol id="i-flask" viewbox="0 0 24 24"><path d="M9 3h6M10 3v5l-5.5 9.5A2.3 2.3 0 0 0 6.5 21h11a2.3 2.3 0 0 0 2-3.5L14 8V3"></path><path d="M7.5 15h9"></path></symbol>
+<symbol id="i-gem" viewbox="0 0 24 24"><path d="m3 8 4-5h10l4 5-9 13z"></path><path d="m3 8 9 13 9-13M7 3l5 18 5-18M3 8h18"></path></symbol>
+<symbol id="i-store" viewbox="0 0 24 24"><path d="M4 10v10h16V10M3 10l2-6h14l2 6"></path><path d="M3 10c0 2 3 2 3 0 0 2 3 2 3 0 0 2 3 2 3 0 0 2 3 2 3 0 0 2 3 2 3 0M9 20v-5h6v5"></path></symbol>
+<symbol id="i-mic" viewbox="0 0 24 24"><rect height="11" rx="3" width="6" x="9" y="3"></rect><path d="M5 11a7 7 0 0 0 14 0M12 18v3M9 21h6"></path></symbol>
+<symbol id="i-calendar" viewbox="0 0 24 24"><rect height="16" rx="2" width="18" x="3" y="5"></rect><path d="M7 3v4M17 3v4M3 10h18"></path></symbol>
+<symbol id="i-game" viewbox="0 0 24 24"><path d="M7 8h10a5 5 0 0 1 4.5 7.2l-1 2a2 2 0 0 1-3.3.5L15 15H9l-2.2 2.7a2 2 0 0 1-3.3-.5l-1-2A5 5 0 0 1 7 8Z"></path><path d="M8 11v4M6 13h4M16 12h.01M18 14h.01"></path></symbol>
+<symbol id="i-quiz" viewbox="0 0 24 24"><path d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"></path><path d="m7 8 1.5 1.5L11 7M13 8h4M7 14l1.5 1.5L11 13M13 14h4"></path></symbol>
+<symbol id="i-award" viewbox="0 0 24 24"><circle cx="12" cy="8" r="5"></circle><path d="m9 13-2 8 5-3 5 3-2-8"></path></symbol>
+<symbol id="i-check" viewbox="0 0 24 24"><path d="m5 12 4 4L19 6"></path></symbol>
+<symbol id="i-menu" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"></path></symbol>
+<symbol id="i-close" viewbox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"></path></symbol>
+<symbol id="i-tip" viewbox="0 0 24 24"><path d="M9 18h6M10 22h4M8.5 15.5A7 7 0 1 1 15.5 15.5C14.6 16.2 14 17 14 18h-4c0-1-.6-1.8-1.5-2.5Z"></path></symbol>
+</svg>
+<div aria-labelledby="welcomeTitle" aria-modal="true" class="modal is-open" id="welcomeModal" role="dialog">
+<div class="modal-card auth-card welcome-split">
+<div class="welcome-side welcome-copy">
+<div class="auth-brand auth-brand-hero">
+<img alt="Logo Colegio Sagrado Corazón de La Molina" class="auth-logo auth-logo-business" src="assets/scm-business-fair-logo.png"/>
+<div>
+<span class="eyebrow big-eyebrow">Bienvenidos a</span>
+<h1 id="welcomeTitle" class="welcome-highlight">SAGRADO CORAZÓN DE LA MOLINA <span>BUSINESS &amp; INNOVATION FAIR</span></h1>
+<p class="welcome-subtitle">Plataforma educativa interactiva para Secundaria enfocada en innovación, emprendimiento, validación y presentación de proyectos.</p>
+</div>
+</div>
+<div class="welcome-tags">
+<span>🚀 Innovación</span>
+<span>💡 Emprendimiento</span>
+<span>🎤 Pitch</span>
+</div>
+<div class="welcome-message">
+<strong>¡Tu idea puede convertirse en una solución con impacto!</strong>
+<span>Completa tu ficha de estudiante para personalizar la experiencia, guardar tu avance y generar tu diploma final.</span>
+</div>
+<form id="studentForm" class="student-entry-form" novalidate="">
+<div class="form-grid two-fields">
+<label>Nombres
+  <input autocomplete="given-name" id="studentName" minlength="2" name="name" placeholder="Ej. Ana María" required="" type="text"/>
+</label>
+<label>Apellidos
+  <input autocomplete="family-name" id="studentLastName" minlength="2" name="lastName" placeholder="Ej. Torres García" required="" type="text"/>
+</label>
+</div>
+<div class="form-grid two-fields">
+<label>Año / Grado
+  <select id="studentGrade" name="grade" required="">
+    <option value="" selected disabled>Selecciona tu grado</option>
+    <option value="1.º de Secundaria">1.º de Secundaria</option>
+    <option value="2.º de Secundaria">2.º de Secundaria</option>
+    <option value="3.º de Secundaria">3.º de Secundaria</option>
+    <option value="4.º de Secundaria">4.º de Secundaria</option>
+    <option value="5.º de Secundaria">5.º de Secundaria</option>
+    <option value="Otro">Otro</option>
+  </select>
+</label>
+<label>Sección
+  <input id="studentSection" maxlength="24" name="section" placeholder="Ej. A, Rubens, Botticelli..." required="" type="text"/>
+</label>
+</div>
+<p class="form-helper">Tus datos se utilizarán para personalizar tu progreso y el diploma de finalización.</p>
+<p class="form-error" id="studentFormError" role="alert"></p>
+<button class="btn btn-primary btn-lg entry-btn" type="submit"><span>Ingresar a la experiencia</span><span aria-hidden="true">→</span></button>
+</form>
+</div>
+<div class="welcome-side welcome-visuals">
+<div aria-label="Galería de proyectos de innovación" class="welcome-carousel" id="welcomeCarousel">
+<div class="welcome-carousel-brand">
+<img alt="SCM Business & Innovation Fair" src="assets/scm-business-fair-logo.png"/>
+<div><strong>SCM BUSINESS &amp; INNOVATION FAIR</strong><small>Imagina · Crea · Produce · Distribuye</small></div>
+</div>
+<div class="welcome-slides">
+<figure class="welcome-slide is-active" data-slide="0">
+<img alt="Estudiantes desarrollando una idea de innovación" src="assets/welcome-01.webp"/>
+<figcaption><span>💡 IMAGINA</span><strong>Transforma una necesidad en una oportunidad.</strong></figcaption>
+</figure>
+<figure class="welcome-slide" data-slide="1">
+<img alt="Estudiantes investigando y validando una propuesta" src="assets/welcome-02.webp"/>
+<figcaption><span>🔎 INVESTIGA</span><strong>Escucha a tus usuarios y valida con evidencia.</strong></figcaption>
+</figure>
+<figure class="welcome-slide" data-slide="2">
+<img alt="Estudiantes construyendo un prototipo funcional" src="assets/welcome-03.webp"/>
+<figcaption><span>🧪 PRODUCE</span><strong>Construye, prueba y mejora tu prototipo.</strong></figcaption>
+</figure>
+<figure class="welcome-slide" data-slide="3">
+<img alt="Estudiantes presentando un stand de emprendimiento" src="assets/welcome-04.webp"/>
+<figcaption><span>🎨 CREA</span><strong>Comunica tu propuesta con una identidad clara.</strong></figcaption>
+</figure>
+<figure class="welcome-slide" data-slide="4">
+<img alt="Estudiantes presentando un pitch de innovación" src="assets/welcome-05.webp"/>
+<figcaption><span>🎤 SUSTENTA</span><strong>Defiende tu idea con claridad y evidencia.</strong></figcaption>
+</figure>
+<figure class="welcome-slide" data-slide="5">
+<img alt="Feria escolar de negocios e innovación" src="assets/welcome-06.webp"/>
+<figcaption><span>🚀 DISTRIBUYE</span><strong>Comparte tu solución y genera impacto.</strong></figcaption>
+</figure>
+</div>
+<button aria-label="Imagen anterior" class="welcome-carousel-btn prev" id="welcomePrev" type="button">‹</button>
+<button aria-label="Imagen siguiente" class="welcome-carousel-btn next" id="welcomeNext" type="button">›</button>
+<div aria-label="Seleccionar imagen" class="welcome-carousel-dots" id="welcomeCarouselDots">
+<button aria-label="Ver imagen 1" class="is-active" data-slide-to="0" type="button"></button>
+<button aria-label="Ver imagen 2" data-slide-to="1" type="button"></button>
+<button aria-label="Ver imagen 3" data-slide-to="2" type="button"></button>
+<button aria-label="Ver imagen 4" data-slide-to="3" type="button"></button>
+<button aria-label="Ver imagen 5" data-slide-to="4" type="button"></button>
+<button aria-label="Ver imagen 6" data-slide-to="5" type="button"></button>
+</div>
+<div class="welcome-carousel-timer"><span>⏱</span><b>Cambio automático</b><small>cada 5 segundos</small></div>
+<div aria-hidden="true" class="welcome-carousel-progress"><i id="welcomeCarouselProgress"></i></div>
+</div>
+</div>
+</div>
+</div>
+<div aria-hidden="true" class="app-shell" id="appShell">
+<aside aria-label="Navegación principal" class="sidebar" id="sidebar">
+<div class="sidebar-top">
+<div class="brand-mini">
+<img alt="SCM" src="assets/scm-logo.png"/>
+<div><strong>SCM</strong><span>Business &amp; Innovation Fair</span></div>
+</div>
+<button aria-label="Cerrar menú" class="icon-btn mobile-only" id="closeSidebar"><svg><use href="#i-close"></use></svg></button>
+</div>
+<nav class="nav-list">
+<button class="nav-item active" data-target="inicio"><span class="nav-icon c1"><svg><use href="#i-home"></use></svg></span><span>Inicio</span></button>
+<button class="nav-item" data-target="reto"><span class="nav-icon c2"><svg><use href="#i-target"></use></svg></span><span>El reto</span></button>
+<button class="nav-item" data-target="ruta"><span class="nav-icon c3"><svg><use href="#i-route"></use></svg></span><span>Ruta del emprendimiento</span></button>
+<button class="nav-item" data-target="mvp"><span class="nav-icon c4"><svg><use href="#i-flask"></use></svg></span><span>MVP y validación</span></button>
+<button class="nav-item" data-target="valor"><span class="nav-icon c5"><svg><use href="#i-gem"></use></svg></span><span>Valor y negocio</span></button>
+<button class="nav-item" data-target="stand"><span class="nav-icon c6"><svg><use href="#i-store"></use></svg></span><span>Stand y marca</span></button>
+<button class="nav-item" data-target="pitch"><span class="nav-icon c7"><svg><use href="#i-mic"></use></svg></span><span>Pitch y sustentación</span></button>
+<button class="nav-item" data-target="cronograma"><span class="nav-icon c8"><svg><use href="#i-calendar"></use></svg></span><span>Cronograma y rúbrica</span></button>
+<button class="nav-item" data-target="juegos"><span class="nav-icon c9"><svg><use href="#i-game"></use></svg></span><span>Juegos educativos</span></button>
+<button class="nav-item" data-target="quiz"><span class="nav-icon c10"><svg><use href="#i-quiz"></use></svg></span><span>Cuestionario</span></button>
+<button class="nav-item" data-target="diploma"><span class="nav-icon c11"><svg><use href="#i-award"></use></svg></span><span>Diploma</span></button>
+</nav>
+</aside>
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+<main class="main-area">
+<header class="topbar">
+<button aria-label="Abrir menú" class="icon-btn mobile-only" id="openSidebar"><svg><use href="#i-menu"></use></svg></button>
+<div class="top-title"><span id="sectionKicker">Sagrado Corazón de La Molina</span><strong id="sectionTitle">Business &amp; Innovation Fair</strong></div>
+<button aria-label="Abrir panel de herramientas" class="icon-btn tools-toggle" id="openTools" title="Mensajes y zoom" type="button">✨</button><div class="top-actions">
+<div class="progress-mini" title="Progreso global"><div class="progress-ring" id="progressRing"><span id="progressPercent">0%</span></div><div><small>Progreso</small><strong id="progressText">0 de 11</strong></div></div>
+<button class="btn btn-ghost btn-sm" id="resetProgress" title="Reiniciar avance">Reiniciar</button>
+<div class="student-chip"><span id="studentInitials">ES</span><div><strong id="studentDisplay">Estudiante</strong><small id="studentMetaDisplay">Grado · Sección</small></div></div>
+</div>
+</header>
+<div class="content-wrap">
+<section class="page-section active-section" data-kicker="Business &amp; Innovation Fair" data-title="Inicio" id="inicio">
+<div class="hero-card">
+<div class="hero-content">
+<span class="pill">Guía interactiva · Secundaria</span>
+<h2>Ideas que inspiran, soluciones que transforman.</h2>
+<p>Aprenderás a detectar una oportunidad, validarla con evidencia, desarrollar un MVP, construir una propuesta de valor, modelar el negocio y defender tu proyecto con un pitch breve.</p>
+<div class="hero-actions">
+<button class="btn btn-primary" data-jump="reto">Comenzar recorrido</button>
+<button class="btn btn-secondary" data-jump="juegos">Ir a los juegos</button>
+</div>
+<div class="hero-stats"><div><strong>9</strong><span>etapas</span></div><div><strong>2 min</strong><span>pitch</span></div><div><strong>20</strong><span>puntos máx.</span></div></div>
+</div>
+<div aria-label="Estudiantes SCM desarrollando ideas de innovación y emprendimiento, sin corbata" class="hero-image" data-image="innovation-team" role="img"></div>
+</div>
+<div class="motivation-strip"><span>💡</span><p><strong>Reto de hoy:</strong> no empieces por el producto. Empieza por comprender una necesidad real y demostrarla con evidencia.</p></div><div aria-label="Claves de la experiencia" class="color-icon-strip">
+<div class="color-icon-item ci-blue"><span>🔎</span><b>Detecta</b><small>una oportunidad real</small></div>
+<div class="color-icon-item ci-violet"><span>🧭</span><b>Investiga</b><small>con evidencia</small></div>
+<div class="color-icon-item ci-green"><span>🧪</span><b>Prototipa</b><small>y prueba con usuarios</small></div>
+<div class="color-icon-item ci-orange"><span>💎</span><b>Crea valor</b><small>para tu cliente</small></div>
+<div class="color-icon-item ci-pink"><span>🎤</span><b>Sustenta</b><small>con seguridad</small></div>
+</div>
+<div class="dashboard-grid">
+<article class="card"><h3>Pregunta central</h3><blockquote>¿Qué oportunidad identificamos, qué evidencia demuestra que existe y por qué nuestra solución genera valor para un cliente objetivo?</blockquote></article>
+<article class="card"><h3>Tu ruta de aprendizaje</h3><div class="task-checklist" id="taskChecklist"></div></article>
+<article class="card accent-card"><h3>Cómo se desbloquea el diploma</h3><p>Completa las 7 secciones de teoría, supera los 3 juegos y aprueba el cuestionario con al menos 8/10.</p><button class="btn btn-light" data-jump="diploma">Ver estado del diploma</button></article>
+</div>
+</section>
+<section class="page-section" data-kicker="1 · Comprender el desafío" data-title="El reto" id="reto">
+<div class="section-heading"><div><span class="eyebrow">Fundamento</span><h2>Del problema a una propuesta sustentada</h2><p>El proyecto parte de una necesidad, problema u oportunidad relevante; luego se investiga, valida, diseña y prueba una solución hasta convertirla en una propuesta empresarial sustentada con evidencia.</p></div><div class="section-badge">01</div></div><figure class="section-visual"><img alt="Investigar y validar" loading="lazy" src="assets/validation.webp"/><figcaption><span class="visual-icon">🔎</span><div><strong>Investigar y validar</strong><small>Entrevistas, encuestas, observación y pruebas convierten una percepción en evidencia útil.</small></div></figcaption></figure>
+<div class="content-grid two-col">
+<article class="card theory-card"><h3>¿Qué se espera del equipo?</h3><ul class="check-list"><li>Identificar y analizar una oportunidad con potencial de emprendimiento.</li><li>Investigar al cliente mediante entrevistas, encuestas, observación, datos o pruebas.</li><li>Desarrollar un prototipo funcional o MVP y probarlo con usuarios.</li><li>Definir propuesta de valor, marca, marketing y comunicación.</li><li>Analizar cliente, costos, precio, canales, comercialización, viabilidad y crecimiento.</li><li>Preparar stand y pitch; defender decisiones ante público y jurado.</li></ul></article>
+<article class="card theory-card"><h3>Autonomía y apoyo familiar</h3><p>El estudiante lidera la investigación, toma de decisiones, distribución de responsabilidades y sustentación. La familia puede apoyar con logística, materiales, contactos, supervisión o escucha de ensayos, pero no sustituye el trabajo intelectual ni creativo.</p><div class="callout"><strong>Regla de oro:</strong> orientar sin resolver. Las decisiones y argumentos finales deben pertenecer al equipo.</div></article>
+</div>
+<div class="infographic flow3"><div><span>1</span><strong>Necesidad</strong><small>Detectar algo que vale la pena resolver.</small></div><i>→</i><div><span>2</span><strong>Evidencia</strong><small>Validar que el problema y el cliente existen.</small></div><i>→</i><div><span>3</span><strong>Valor</strong><small>Demostrar por qué la solución importa.</small></div></div>
+<div class="section-complete"><button class="btn btn-success complete-theory" data-task="reto">✓ Marcar sección como revisada</button></div>
+</section>
+<section class="page-section" data-kicker="2 · Proceso de 9 etapas" data-title="Ruta del emprendimiento" id="ruta">
+<div class="section-heading"><div><span class="eyebrow">Mapa de trabajo</span><h2>Ruta del emprendimiento</h2><p>La guía propone nueve pasos conectados. Cada etapa produce evidencia o decisiones que alimentan la siguiente.</p></div><div class="section-badge">02</div></div><figure class="section-visual"><img alt="De la idea a la feria" loading="lazy" src="assets/fair.webp"/><figcaption><span class="visual-icon">🚀</span><div><strong>De la idea a la feria</strong><small>La ruta conecta oportunidad, cliente, solución, MVP, valor, marca, modelo de negocio y sustentación.</small></div></figcaption></figure>
+<div class="route-timeline" id="routeTimeline"></div>
+<div class="motivation-strip"><span>🚀</span><p><strong>No busques hacerlo perfecto a la primera.</strong> La mejora aparece cuando pruebas, escuchas y documentas los cambios.</p></div>
+<div class="section-complete"><button class="btn btn-success complete-theory" data-task="ruta">✓ Marcar sección como revisada</button></div>
+</section>
+<section class="page-section" data-kicker="3 · Probar para aprender" data-title="MVP y validación" id="mvp">
+<div class="section-heading"><div><span class="eyebrow">Experimentación</span><h2>MVP, pruebas y mejora</h2><p>El MVP o prototipo funcional permite probar la solución con usuarios reales, recoger retroalimentación y documentar cambios fundamentados.</p></div><div class="section-badge">03</div></div><figure class="section-visual"><img alt="Construir para aprender" loading="lazy" src="assets/prototype.webp"/><figcaption><span class="visual-icon">🧪</span><div><strong>Construir para aprender</strong><small>Un prototipo funcional permite probar, recoger retroalimentación y justificar mejoras.</small></div></figcaption></figure>
+<div class="content-grid two-col">
+<article class="card"><h3>Ciclo de validación</h3><div class="loop-diagram"><div>Construye<small>versión funcional</small></div><span>→</span><div>Prueba<small>con usuarios</small></div><span>→</span><div>Aprende<small>analiza feedback</small></div><span>→</span><div>Mejora<small>documenta cambios</small></div></div><p class="microcopy">La guía evalúa no solo el prototipo final, sino también las pruebas y mejoras realizadas.</p></article>
+<article class="card"><h3>¿Qué evidencia puedes reunir?</h3><div class="evidence-grid"><span>🎤 Entrevistas</span><span>📝 Encuestas</span><span>👀 Observación</span><span>📊 Datos</span><span>🧪 Pruebas</span><span>💬 Feedback</span></div><div class="callout"><strong>Pregunta útil:</strong> ¿qué aprendimos del usuario que cambió nuestra solución?</div></article>
+</div>
+<div class="video-card"><div><span class="eyebrow">Video complementario</span><h3>¿Qué es un Producto Mínimo Viable?</h3><p>Recurso externo para reforzar el concepto de MVP y validación.</p></div><div class="video-frame"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" loading="lazy" src="https://www.youtube-nocookie.com/embed/iLKMiuE3IE0" title="Qué es un MVP"></iframe></div></div>
+<div class="section-complete"><button class="btn btn-success complete-theory" data-task="mvp">✓ Marcar sección como revisada</button></div>
+</section>
+<section class="page-section" data-kicker="4 · Diferenciar y hacer viable" data-title="Valor y negocio" id="valor">
+<div class="section-heading"><div><span class="eyebrow">Estrategia</span><h2>Propuesta de valor y modelo de negocio</h2><p>Una propuesta sólida define para quién es, qué resuelve y por qué es diferente; además conecta cliente, costos, precio, canales, comercialización y posibilidades de crecimiento.</p></div><div class="section-badge">04</div></div><div class="visual-duo">
+<figure><img alt="Estudiantes trabajando la propuesta de valor sin corbata" loading="lazy" src="assets/value-workshop.webp"/><figcaption><span>💎</span><b>Propuesta de valor</b></figcaption></figure>
+<figure><img alt="Estudiantes analizando costos, precio y viabilidad sin corbata" loading="lazy" src="assets/business-model.webp"/><figcaption><span>📊</span><b>Modelo de negocio y viabilidad</b></figcaption></figure>
+</div>
+<div class="value-canvas">
+<article><span>👤</span><h3>Cliente</h3><p>¿Para quién creamos valor y cómo sabemos que es el público correcto?</p></article>
+<article><span>🎯</span><h3>Problema</h3><p>¿Qué necesidad u oportunidad está sustentada con evidencia?</p></article>
+<article><span>💎</span><h3>Valor</h3><p>¿Qué beneficio genera la solución y qué la hace diferente?</p></article>
+<article><span>💰</span><h3>Viabilidad</h3><p>¿Cómo se relacionan costos, precio, canales y estrategia comercial?</p></article>
+</div>
+<div class="content-grid two-col videos-two">
+<div class="video-card compact"><div><span class="eyebrow">Video complementario</span><h3>Propuesta de valor</h3></div><div class="video-frame"><iframe allowfullscreen="" loading="lazy" src="https://www.youtube-nocookie.com/embed/X4af5ncLeJ0" title="Propuesta de valor"></iframe></div></div>
+<div class="video-card compact"><div><span class="eyebrow">Video complementario</span><h3>Business Model Canvas</h3></div><div class="video-frame"><iframe allowfullscreen="" loading="lazy" src="https://www.youtube-nocookie.com/embed/OoshJr_cEgY" title="Business Model Canvas"></iframe></div></div>
+</div>
+<div class="section-complete"><button class="btn btn-success complete-theory" data-task="valor">✓ Marcar sección como revisada</button></div>
+</section>
+<section class="page-section" data-kicker="5 · Comunicar el proyecto" data-title="Stand y marca" id="stand">
+<div class="section-heading"><div><span class="eyebrow">Experiencia de feria</span><h2>Stand, identidad y comunicación</h2><p>El stand debe permitir comprender el problema, la solución, el proceso, el valor y la lógica comercial del proyecto, no solo mostrar un producto bonito.</p></div><div class="section-badge">05</div></div><div class="visual-duo">
+<figure><img alt="Stand de emprendimiento SCM presentado por estudiantes sin corbata" loading="lazy" src="assets/stand.webp"/><figcaption><span>🏪</span><b>Stand que comunica valor</b></figcaption></figure>
+<figure><img alt="Estudiantes desarrollando marca y comunicación sin corbata" loading="lazy" src="assets/branding.webp"/><figcaption><span>🎨</span><b>Marca y comunicación</b></figcaption></figure>
+</div>
+<div class="stand-layout">
+<div class="stand-mock"><div class="stand-banner">TU MARCA<br/><small>Propuesta de valor</small></div><div class="stand-screen">Problema → Evidencia → Solución</div><div class="stand-product">MVP</div><div class="stand-qr">QR</div><div class="stand-price">Precio</div></div>
+<article class="card"><h3>Requisitos del stand</h3><ul class="check-list dense"><li>Problema u oportunidad validada con evidencia.</li><li>Cliente objetivo claramente definido.</li><li>Propuesta de valor y elemento diferenciador.</li><li>Producto, servicio, prototipo funcional o MVP.</li><li>Identidad y posicionamiento de marca.</li><li>Precio, estructura básica de costos y comercialización.</li><li>Evidencia de investigación, pruebas y mejoras.</li><li>Estrategia básica de marketing y comunicación.</li><li>Recursos de apoyo, como códigos QR.</li><li>Presentación breve para explicar y defender la propuesta.</li></ul></article>
+</div>
+<div class="process-ribbon"><span>OPORTUNIDAD</span><b>→</b><span>CLIENTE</span><b>→</b><span>SOLUCIÓN</span><b>→</b><span>MVP + VALIDACIÓN</span><b>→</b><span>VALOR</span><b>→</b><span>MARCA</span><b>→</b><span>NEGOCIO</span></div>
+<div class="section-complete"><button class="btn btn-success complete-theory" data-task="stand">✓ Marcar sección como revisada</button></div>
+</section>
+<section class="page-section" data-kicker="6 · Defender con evidencia" data-title="Pitch y sustentación" id="pitch">
+<div class="section-heading"><div><span class="eyebrow">Comunicación</span><h2>Pitch de aproximadamente 2 minutos</h2><p>Todos los integrantes deben conocer el proyecto y justificar las decisiones tomadas: evidencia, cliente, diferenciación, aprendizajes del MVP, cambios, costos, precio, viabilidad, impacto y crecimiento.</p></div><div class="section-badge">06</div></div><figure class="section-visual"><img alt="Defender la propuesta" loading="lazy" src="assets/pitch.webp"/><figcaption><span class="visual-icon">🎤</span><div><strong>Defender la propuesta</strong><small>El pitch reúne evidencia, cliente, solución, aprendizajes, viabilidad e impacto en una explicación breve.</small></div></figcaption></figure>
+<div class="pitch-builder">
+<div class="pitch-step"><span>0:00–0:20</span><strong>Problema + evidencia</strong><p>Explica la oportunidad y demuestra por qué existe.</p></div>
+<div class="pitch-step"><span>0:20–0:50</span><strong>Cliente + solución</strong><p>Define a quién ayudas y qué propones.</p></div>
+<div class="pitch-step"><span>0:50–1:20</span><strong>MVP + aprendizaje</strong><p>Muestra pruebas, feedback y mejoras.</p></div>
+<div class="pitch-step"><span>1:20–1:45</span><strong>Valor + negocio</strong><p>Resume diferenciación, precio, canales y viabilidad.</p></div>
+<div class="pitch-step"><span>1:45–2:00</span><strong>Cierre</strong><p>Impacto, crecimiento y una frase memorable.</p></div>
+</div>
+<div class="content-grid two-col">
+<article class="card"><h3>Preguntas para ensayar</h3><ul class="question-list"><li>¿Qué evidencia demuestra que esta oportunidad existe?</li><li>¿Quién es el cliente objetivo y cómo lo validaron?</li><li>¿Qué hace diferente a su solución?</li><li>¿Qué aprendieron al probar el MVP?</li><li>¿Qué cambios realizaron y por qué?</li><li>¿Cómo definieron costos, precio y estrategia comercial?</li><li>¿Por qué consideran viable la propuesta?</li><li>¿Qué impacto podría generar y cómo podría crecer?</li></ul></article>
+<div class="video-card compact"><div><span class="eyebrow">Video complementario</span><h3>Elevator pitch: tienes 2 minutos</h3></div><div class="video-frame"><iframe allowfullscreen="" loading="lazy" src="https://www.youtube-nocookie.com/embed/ZCWQHxHj_zg" title="Elevator pitch de 2 minutos"></iframe></div></div>
+</div>
+<div class="section-complete"><button class="btn btn-success complete-theory" data-task="pitch">✓ Marcar sección como revisada</button></div>
+</section>
+<section class="page-section" data-kicker="7 · Organizar y evaluar" data-title="Cronograma y rúbrica" id="cronograma">
+<div class="section-heading"><div><span class="eyebrow">Planificación</span><h2>Fechas, evaluación y checklist final</h2><p>La guía establece fechas de desarrollo, culminación y feria, y una rúbrica de 20 puntos centrada en evidencia, innovación, MVP, viabilidad y sustentación.</p></div><div class="section-badge">07</div></div><figure class="section-visual"><img alt="Prepararse para la feria" loading="lazy" src="assets/fair.webp"/><figcaption><span class="visual-icon">📅</span><div><strong>Prepararse para la feria</strong><small>Planifica el desarrollo, la culminación y la presentación final del proyecto.</small></div></figcaption></figure>
+<div class="content-grid two-col">
+<article class="card"><h3>Cronograma</h3><div class="schedule"><div><time>12–30 oct.</time><p><strong>Desarrollo</strong><br/>Investigación, solución, diseño, prototipo y primeras pruebas.</p></div><div><time>02–03 nov.</time><p><strong>Culminación</strong><br/>Mejoras, marca, precio, stand, comunicación y presentación breve.</p></div><div><time>04–05 nov.</time><p><strong>Feria</strong><br/>Presentación, demostración, comercialización y sustentación.</p></div></div></article>
+<article class="card"><h3>Presentación</h3><div class="schedule"><div><time>Mié. 04 nov.</time><p>1.º, 2.º, 3.º y 4.º Rubens · 3:00 a 6:00 p.m.</p></div><div><time>Jue. 05 nov.</time><p>4.º Botticelli, 5.º Dalí, 6.º, 5.º y 4.º Schubert - Primaria · 3:00 a 6:00 p.m.</p></div></div><div class="callout">El proyecto se considera evaluación mensual del 4.º bimestre en los cursos indicados por la guía.</div></article>
+</div>
+<div class="rubric-grid"><article><span>4 pts</span><strong>Oportunidad e investigación</strong><p>Evidencia clara de la necesidad y cliente.</p></article><article><span>4 pts</span><strong>Innovación y valor</strong><p>Solución diferenciada y propuesta sólida.</p></article><article><span>4 pts</span><strong>MVP y mejora</strong><p>Prototipo funcional, pruebas y mejoras.</p></article><article><span>4 pts</span><strong>Negocio y viabilidad</strong><p>Cliente, costos, precio, canales y comercialización.</p></article><article><span>4 pts</span><strong>Marca y pitch</strong><p>Identidad coherente y sustentación convincente.</p></article></div>
+<article class="card checklist-final"><h3>Checklist final del equipo</h3><div class="checklist-columns"><label><input type="checkbox"/> Evidencia valida necesidad y cliente.</label><label><input type="checkbox"/> Propuesta de valor y diferenciación claras.</label><label><input type="checkbox"/> MVP funciona y tiene pruebas documentadas.</label><label><input type="checkbox"/> Costos, precio, canales y viabilidad sustentados.</label><label><input type="checkbox"/> Marca y comunicación coherentes.</label><label><input type="checkbox"/> Stand explica el proceso completo.</label><label><input type="checkbox"/> Todos pueden responder preguntas.</label><label><input type="checkbox"/> Pitch de ~2 minutos con evidencia.</label></div></article>
+<div class="section-complete"><button class="btn btn-success complete-theory" data-task="cronograma">✓ Marcar sección como revisada</button></div>
+</section>
+<section class="page-section" data-kicker="8 · Aprender jugando" data-title="Juegos educativos" id="juegos">
+<div class="section-heading"><div><span class="eyebrow">Práctica activa</span><h2>3 retos interactivos</h2><p>Los juegos utilizan conceptos de la guía Business &amp; Innovation Fair. Se validan en tiempo real y cada reto suma al progreso.</p></div><div class="section-badge">08</div></div><figure class="section-visual"><img alt="Aprender haciendo" loading="lazy" src="assets/branding.webp"/><figcaption><span class="visual-icon">🎮</span><div><strong>Aprender haciendo</strong><small>Los retos convierten los conceptos centrales de la guía en práctica activa.</small></div></figcaption></figure>
+<div class="game-tabs" role="tablist"><button class="game-tab active" data-game="crossword">Crucigrama</button><button class="game-tab" data-game="mental">Ruta mental</button><button class="game-tab" data-game="wordsearch">Sopa de letras</button></div>
+<div class="game-panel active-game" id="crossword">
+<div class="game-head"><div><h3>Crucigrama del emprendimiento</h3><p>Completa los términos. Cada letra se valida al escribirla.</p></div><span class="status-pill" id="crosswordStatus">0/9 palabras</span></div>
+<div class="crossword-layout"><div aria-label="Crucigrama interactivo" class="crossword-grid" id="crosswordGrid"></div><div class="clues" id="crosswordClues"></div></div>
+</div>
+<div class="game-panel" id="mental">
+<div class="game-head"><div><h3>Ruta mental: ordena el proceso</h3><p>Toca los pasos en el orden correcto de la ruta de emprendimiento.</p></div><span class="status-pill" id="mentalStatus">Paso 1 de 9</span></div>
+<div class="mental-selected" id="mentalSelected"></div>
+<div class="mental-options" id="mentalOptions"></div>
+<button class="btn btn-ghost btn-sm" id="resetMental">Reiniciar juego</button>
+</div>
+<div class="game-panel" id="wordsearch">
+<div class="game-head"><div><h3>Sopa de letras: 10 palabras clave</h3><p>Haz clic en la primera y luego en la última letra de una palabra. Puede estar horizontal, vertical o diagonal, en ambos sentidos.</p></div><span class="status-pill" id="wordStatus">0/10 encontradas</span></div>
+<div class="wordsearch-layout"><div aria-label="Sopa de letras" class="word-grid" id="wordGrid"></div><div><h4>Palabras</h4><div class="word-list" id="wordList"></div><button class="btn btn-ghost btn-sm" id="clearWordSelection">Limpiar selección</button></div></div>
+</div>
+</section>
+<section class="page-section" data-kicker="9 · Comprueba lo aprendido" data-title="Cuestionario" id="quiz">
+<div class="section-heading"><div><span class="eyebrow">Evaluación</span><h2>Cuestionario de 10 preguntas</h2><p>Responde todas las preguntas. Recibirás feedback inmediato y necesitas al menos 8/10 para desbloquear el diploma.</p></div><div class="section-badge">09</div></div><figure class="section-visual"><img alt="Comprueba lo aprendido" loading="lazy" src="assets/validation.webp"/><figcaption><span class="visual-icon">🧠</span><div><strong>Comprueba lo aprendido</strong><small>Responde las 10 preguntas y revisa el feedback antes de volver a intentarlo.</small></div></figcaption></figure>
+<div class="quiz-container" id="quizContainer"></div>
+<div class="quiz-actions"><button class="btn btn-primary" id="gradeQuiz">Calificar cuestionario</button><button class="btn btn-secondary" hidden="" id="retryQuiz">Reintentar</button><div class="quiz-result" id="quizResult"></div></div>
+</section>
+<section class="page-section" data-kicker="10 · Cierre y reconocimiento" data-title="Diploma" id="diploma">
+<div class="section-heading"><div><span class="eyebrow">Meta final</span><h2>Tu diploma de finalización</h2><p>Se habilita cuando completas teoría, juegos y cuestionario.</p></div><div class="section-badge">10</div></div><figure class="section-visual"><img alt="Cierre y reconocimiento" loading="lazy" src="assets/award.webp"/><figcaption><span class="visual-icon">🏆</span><div><strong>Cierre y reconocimiento</strong><small>Completa toda la experiencia para habilitar tu diploma de finalización.</small></div></figcaption></figure>
+<div class="diploma-gate" id="diplomaGate"></div>
+<div class="diploma-preview locked" id="diplomaPreview">
+<div class="diploma-border">
+<img alt="SCM" src="assets/scm-logo.png"/>
+<span class="diploma-kicker">Colegio Sagrado Corazón de La Molina</span>
+<h2>DIPLOMA DE FINALIZACIÓN</h2>
+<p>Se otorga a</p>
+<h3 id="diplomaName">Nombre del estudiante</h3>
+<p>por completar satisfactoriamente la experiencia educativa</p>
+<h4>SCM BUSINESS &amp; INNOVATION FAIR · SECUNDARIA</h4>
+<div class="diploma-meta"><span id="diplomaGrade">Grado</span><span id="diplomaSection">Sección</span><span id="diplomaDate">fecha</span><span id="diplomaScore">10/10</span></div>
+<div class="signature-row"><div><b>SCM</b><span>Formación e innovación</span></div><div><b>✓</b><span>Finalización verificada</span></div></div>
+</div>
+</div>
+<div class="diploma-actions"><button class="btn btn-primary btn-lg" disabled="" id="downloadDiploma">Descargar diploma en PDF</button><button class="btn btn-secondary" disabled="" id="printDiploma">Imprimir / Guardar como PDF</button></div>
+<div class="motivation-strip"><span>🏆</span><p><strong>Una propuesta sólida no solo se ve bien:</strong> demuestra que existe una oportunidad, que fue validada y que el equipo puede defender por qué genera valor.</p></div>
+</section>
+</div>
+</main>
+<aside aria-label="Panel lateral de apoyo" class="tools-rail" id="toolsRail">
+<div class="tools-head">
+<div><span class="tools-eyebrow">Panel lateral</span><strong>Mensajes y zoom</strong></div>
+<button aria-label="Cerrar panel" class="icon-btn tools-close" id="closeTools" type="button">✕</button>
+</div>
+<div class="tools-card message-card emphasis-card">
+<span class="tools-big-icon">💬</span>
+<small>MENSAJE MOTIVADOR</small>
+<p id="rightMessage">Tu proyecto mejora cuando puedes explicar por qué cada decisión tiene sentido.</p>
+</div>
+<div class="tools-card zoom-card">
+<div class="tools-card-title"><span>🔎</span><strong>Zoom de lectura</strong></div>
+<div aria-label="Controles de zoom" class="zoom-controls" role="group">
+<button aria-label="Reducir zoom" id="zoomOut" type="button">−</button>
+<button aria-label="Restablecer zoom" id="zoomReset" type="button"><span id="zoomValue">100%</span></button>
+<button aria-label="Aumentar zoom" id="zoomIn" type="button">+</button>
+</div>
+<small>Amplía el contenido central sin perder la navegación.</small>
+</div>
+<div class="tools-card color-message"><span>🌟</span><p><b>Avanza paso a paso.</b><br/>Cada sección completada te acerca a tu diploma final.</p></div>
+</aside><div aria-hidden="true" class="tools-backdrop" id="toolsBackdrop"></div></div>
+<div aria-live="polite" class="toast" id="toast" role="status"></div>
+<div aria-hidden="true" class="confetti-layer" id="confettiLayer"></div>
+<script defer="" src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js"></script>
+<script defer="" src="app.js"></script>
+</body>
+</html>
